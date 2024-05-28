@@ -95,6 +95,17 @@ class PokemonDetailView: UIViewController {
         return view
     }()
     
+    lazy var collectionEvolution: UICollectionView = {
+        let layout = UICollectionViewFlowLayout()
+        layout.scrollDirection = .vertical
+        layout.itemSize = CGSize(width: 200, height: 200)
+        
+        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        collectionView.translatesAutoresizingMaskIntoConstraints = false
+        collectionView.register(PokemonRegionViewCell.self, forCellWithReuseIdentifier: "PokemonRegionViewCell")
+        return collectionView
+    }()
+    
     init(presenter: PokemonDetailPresentable) {
         self.presenter = presenter
         super.init(nibName: nil, bundle: nil)
@@ -113,6 +124,8 @@ class PokemonDetailView: UIViewController {
         tableStats.dataSource = self
         tableMoves.dataSource = self
         tableMoves.delegate = self
+        collectionEvolution.dataSource = self
+        collectionEvolution.delegate = self
     }
     
     @objc private func changeInformation(){

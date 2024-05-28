@@ -15,7 +15,7 @@ protocol MovesModulePresenterUI: AnyObject {
 protocol MovesModulePresentable: AnyObject {
     var ui: MovesModulePresenterUI? {get}
     var moveId: String {get}
-    
+    var viewModel: MovesModuleViewModel {get}
     func onViewAppear()
 }
 
@@ -37,7 +37,7 @@ class MovesModulePresenter: MovesModulePresentable {
     
     func onViewAppear() {
         Task {
-            let model = await interactor.getMovesDetails(id: moveId)
+            let model = await self.interactor.getMovesDetails(id: self.moveId)
             viewModel = mapper.map(entity: model)
             await MainActor.run {
                 ui?.updateUI(viewModel: viewModel)

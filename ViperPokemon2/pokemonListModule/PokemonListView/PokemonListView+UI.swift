@@ -15,7 +15,7 @@ extension PokemonListView {
     }
     
     func addSubViews(){
-        [labelQuestion,txtSearch,labelGeneration,pokemonTable].forEach(scroll.addSubview)
+        [labelQuestion,txtSearch,labelRegion,regionTable,labelGeneration,pokemonTable].forEach(scroll.addSubview)
         [scroll].forEach(view.addSubview)
     }
     
@@ -35,14 +35,25 @@ extension PokemonListView {
             txtSearch.topAnchor.constraint(equalTo: labelQuestion.bottomAnchor),
             txtSearch.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
             txtSearch.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
-            txtSearch.bottomAnchor.constraint(equalTo: labelGeneration.topAnchor),
+            txtSearch.bottomAnchor.constraint(equalTo: labelRegion.topAnchor),
             
-            labelGeneration.topAnchor.constraint(equalTo: txtSearch.bottomAnchor),
+            labelRegion.topAnchor.constraint(equalTo: txtSearch.bottomAnchor),
+            labelRegion.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 25),
+            labelRegion.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            labelRegion.bottomAnchor.constraint(equalTo: regionTable.topAnchor),
+            
+            regionTable.topAnchor.constraint(equalTo: labelRegion.bottomAnchor),
+            regionTable.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 5),
+            regionTable.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -5),
+            regionTable.bottomAnchor.constraint(equalTo: labelGeneration.topAnchor),
+            regionTable.heightAnchor.constraint(equalToConstant: 110),
+            
+            labelGeneration.topAnchor.constraint(equalTo: regionTable.bottomAnchor),
             labelGeneration.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 25),
             labelGeneration.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             labelGeneration.bottomAnchor.constraint(equalTo: pokemonTable.topAnchor),
            
-            pokemonTable.topAnchor.constraint(equalTo: labelGeneration.bottomAnchor, constant: 20),
+            pokemonTable.topAnchor.constraint(equalTo: labelGeneration.bottomAnchor),
             pokemonTable.leadingAnchor.constraint(equalTo: view.leadingAnchor,constant: 5),
             pokemonTable.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -5),
             pokemonTable.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),

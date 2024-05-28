@@ -6,18 +6,36 @@
 //
 
 import Foundation
+import UIKit
+
+extension MovesModuleView: UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return presenter.viewModel.arrayEstadistcs?.count ?? 1
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PokemonRegionViewCell", for: indexPath) as? PokemonRegionViewCell else { return .init()}
+        cell.layer.cornerRadius = 10
+        cell.layer.masksToBounds = true
+        if let stadistics = presenter.viewModel.arrayEstadistcs?[indexPath.row] {
+            cell.configure(region: stadistics)
+        }
+        return cell
+    }
+}
+
+extension MovesModuleView: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: UIScreen.main.bounds.width - 50, height: 150.0)
+    }
+}
 
 extension MovesModuleView: MovesModulePresenterUI {
     func updateUI(viewModel: MovesModuleViewModel) {
         self.labelMoveName.text = viewModel.name
-        self.moveDescription.text = "Definition:" + "\n" + (viewModel.effectEntries?.first?.effect ?? "No found") + "\n"
-            
-        self.labelPP.text = "PP: \(viewModel.pp ?? 0)"
-        self.labelPower.text = "Power: \(viewModel.power ?? 0)"
-        self.labelPriority.text = "Prioriry: \(viewModel.priority ?? 0)"
-        self.labelCritRateValue.text = "\(viewModel.meta?.critRate ?? 0)"
-        self.labelDrainValue.text = "\(viewModel.meta?.drain ?? 0)"
-        self.labelFlinchChanceValue.text = "\(viewModel.meta?.flinchChance ?? 0)"
-       
+        self.moveDescription.text = viewModel.effectEntries
+        DispatchQueue.main.async {
+            self.collectionMoveStadistic.reloadData()
+        }
     }
 }

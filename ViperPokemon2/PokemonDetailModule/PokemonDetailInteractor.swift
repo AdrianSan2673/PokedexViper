@@ -18,4 +18,8 @@ class PokemonDetailInteractor: PokemonDetailInteractable {
         let jsonDecoder = JSONDecoder()
         return try! jsonDecoder.decode(PokemonDetailEntity.self, from: data)
     }
+    
+    /*func getPokemonEspecies(withName name: String) async -> PokemonEspeciesEntity {
+        let url = URL(string: "https://pokeapi.co/api/v2/pokemon-species/\(name)")!
+    }*/
 }

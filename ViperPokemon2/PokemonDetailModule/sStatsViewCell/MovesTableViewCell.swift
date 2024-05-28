@@ -49,4 +49,11 @@ class MovesTableViewCell: UITableViewCell {
             moveName.text = move
         }
     }
+    func configureRegions(model: PokemonEntries){
+        if let pokemon = model.pokemonSpecies?.name {
+            moveName.text = pokemon
+        } else {
+            moveName.text = "NA"
+        }
+    }
 }

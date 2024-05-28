@@ -17,6 +17,7 @@ protocol PokemonDetailPresentable: AnyObject {
     var ui: PokemonDetailPresenterUI? {get}
     var viewModel : PokemonDetailViewModel {get}
     var pokemonId: Int {get}
+    var evolutionChain: [EvolutionChain] {get}
     
     func onViewAppear()
     func onTapCell(move: String)
@@ -28,15 +29,17 @@ class PokemonDetailPresenter: PokemonDetailPresentable {
     weak var ui: PokemonDetailPresenterUI?
     
     var pokemonId: Int
+    var evolutionChain: [EvolutionChain]
     private let interactor: PokemonDetailInteractable
     private let mapper: PokemonDetailMapper
     private let router: PokemonDetailRouting
     
-    init(pokemonId: Int, Interactor: PokemonDetailInteractable, mapper: PokemonDetailMapper, router: PokemonDetailRouter) {
+    init(pokemonId: Int, Interactor: PokemonDetailInteractable, mapper: PokemonDetailMapper, router: PokemonDetailRouter, evolutionChain: [EvolutionChain]) {
         self.pokemonId = pokemonId
         self.interactor = Interactor
         self.mapper = mapper
         self.router = router
+        self.evolutionChain = evolutionChain
     }
     
     func onViewAppear() {

@@ -9,161 +9,35 @@ import Foundation
 import UIKit
 
 class MovesModuleView: UIViewController {
-    private let presenter: MovesModulePresentable
-    
+    let presenter: MovesModulePresentable
+    var myCellWidth = UIScreen.main.bounds.width / 2
     lazy var labelMoveName: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = .systemFont(ofSize: 35, weight: .bold)
+        label.font = .systemFont(ofSize: 40, weight: .bold)
         label.numberOfLines = 0
-        return label
-    }()
-    
-    lazy var stackHorizontal: UIStackView = {
-        let stack = UIStackView()
-        stack.axis = .horizontal
-        stack.alignment = .center
-        stack.spacing = 10
-        stack.translatesAutoresizingMaskIntoConstraints = false
-        return stack
-    }()
-    
-    lazy var labelPriority: UILabel = {
-        let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = .systemFont(ofSize: 20, weight: .bold)
-        label.numberOfLines = 0
-        label.layer.masksToBounds = true
-        label.backgroundColor = Utils.shared.hexStringToUIColor(hex: "93F3F0")
-        label.layer.borderColor = UIColor.blue.cgColor
-        label.layer.cornerRadius = 10
-        return label
-    }()
-    
-    lazy var labelPower: UILabel = {
-        let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = .systemFont(ofSize: 20, weight: .bold)
-        label.numberOfLines = 0
-        label.backgroundColor = Utils.shared.hexStringToUIColor(hex: "BDF393")
-        label.layer.masksToBounds = true
-        label.layer.borderColor = UIColor.purple.cgColor
-        label.layer.cornerRadius = 10
-        return label
-    }()
-    
-    lazy var labelPP: UILabel = {
-        let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = .systemFont(ofSize: 20, weight: .bold)
-        label.numberOfLines = 0
-        label.backgroundColor = Utils.shared.hexStringToUIColor(hex: "AD93F3")
-        label.layer.masksToBounds = true
-        label.layer.borderColor = UIColor.green.cgColor
-        label.layer.cornerRadius = 10
         return label
     }()
     
     lazy var moveDescription: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = .systemFont(ofSize: 20, weight: .bold)
-        label.numberOfLines = 7
+        label.font = .systemFont(ofSize: 25, weight: .regular)
+        label.numberOfLines = 10
         label.layer.masksToBounds = true
         label.layer.cornerRadius = 10
         return label
     }()
     
-    lazy var labelCritRate : UILabel = {
-        let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = .systemFont(ofSize: 15, weight: .bold)
-        label.numberOfLines = 0
-        label.text = "Crit rate"
-        return label
-    }()
-    
-    lazy var labelDrain : UILabel = {
-        let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = .systemFont(ofSize: 15, weight: .bold)
-        label.numberOfLines = 0
-        label.text = "Drain"
-        return label
-    }()
-    
-    lazy var labelFlinchChance : UILabel = {
-        let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = .systemFont(ofSize: 15, weight: .bold)
-        label.numberOfLines = 0
-        label.text = "Flinch chance"
-        return label
-    }()
-    
-    lazy var labelCritRateValue : UILabel = {
-        let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = .systemFont(ofSize: 15, weight: .bold)
-        label.numberOfLines = 0
-        return label
-    }()
-    
-    lazy var labelDrainValue : UILabel = {
-        let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = .systemFont(ofSize: 15, weight: .bold)
-        label.numberOfLines = 0
-        return label
-    }()
-    
-    lazy var labelFlinchChanceValue : UILabel = {
-        let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = .systemFont(ofSize: 15, weight: .bold)
-        label.numberOfLines = 0
-        return label
-    }()
-    
-    lazy var uiViewStadistics: UIView = {
-        let view = UIView()
-        view.translatesAutoresizingMaskIntoConstraints = false
-        view.layer.borderWidth = 1
-        view.layer.borderColor = UIColor.black.cgColor
-        view.layer.cornerRadius = 10
-        //view.layer.masksToBounds = true
-        //view.layer.shadowColor = UIColor.black.cgColor
-        //view.layer.shadowOpacity = 1
-        //view.layer.shadowOffset = .zero
-        //view.layer.shadowRadius = 10
-        //view.layer.borderColor = UIColor.gray.cgColor
-        return view
-    }()
-    
-    lazy var stackVerticalStadistics: UIStackView = {
-        let stack = UIStackView()
-        stack.axis = .vertical
-        stack.alignment = .center
-        stack.translatesAutoresizingMaskIntoConstraints = false
-        stack.layer.cornerRadius = 10
-        stack.layer.masksToBounds = true
-        return stack
-    }()
-    
-    lazy var stackHorizontalStadisticsTitle: UIStackView = {
-        let stack = UIStackView()
-        stack.axis = .horizontal
-        stack.alignment = .center
-        stack.translatesAutoresizingMaskIntoConstraints = false
-        return stack
-    }()
-    
-    lazy var stackHorizontalStadisticsValue: UIStackView = {
-        let stack = UIStackView()
-        stack.axis = .horizontal
-        stack.alignment = .center
-        stack.translatesAutoresizingMaskIntoConstraints = false
-        return stack
+    lazy var collectionMoveStadistic: UICollectionView = {
+        let layout = UICollectionViewFlowLayout()
+        layout.scrollDirection = .horizontal
+        layout.itemSize = CGSize(width: UIScreen.main.bounds.width - 40, height: 40)
+        
+        let collection = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        collection.translatesAutoresizingMaskIntoConstraints = false
+        collection.register(PokemonRegionViewCell.self, forCellWithReuseIdentifier: "PokemonRegionViewCell")
+        return collection
     }()
     
     init(presenter: MovesModulePresentable) {
@@ -181,5 +55,6 @@ class MovesModuleView: UIViewController {
         view.backgroundColor = .white
         setupUI()
         presenter.onViewAppear()
+        collectionMoveStadistic.dataSource = self
     }
 }

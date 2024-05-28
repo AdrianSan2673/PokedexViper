@@ -17,9 +17,10 @@ extension PokemonDetailView {
     
     func addSubViews(){
         [viewStadistic,imagePokemon].forEach(view.addSubview)
-        [labelPokemonName,collectionType,segmentControl,viewStats,viewMoves].forEach(viewStadistic.addArrangedSubview)
+        [labelPokemonName,collectionType,segmentControl,viewStats,viewMoves,viewEvolutions].forEach(viewStadistic.addArrangedSubview)
         [tableStats].forEach(viewStats.addSubview)
         [tableMoves].forEach(viewMoves.addSubview)
+        [collectionEvolution].forEach(viewEvolutions.addSubview)
     }
     
     func setupConstraints(){
@@ -57,6 +58,15 @@ extension PokemonDetailView {
             tableMoves.leadingAnchor.constraint(equalTo: viewMoves.leadingAnchor),
             tableMoves.trailingAnchor.constraint(equalTo: viewMoves.trailingAnchor),
             tableMoves.bottomAnchor.constraint(equalTo: viewMoves.bottomAnchor),
+            
+            viewEvolutions.leadingAnchor.constraint(equalTo: viewStadistic.leadingAnchor, constant: 10),
+            viewEvolutions.trailingAnchor.constraint(equalTo: viewStadistic.trailingAnchor, constant: -10),
+            viewEvolutions.bottomAnchor.constraint(equalTo: viewStadistic.bottomAnchor, constant: -10),
+            
+            collectionEvolution.topAnchor.constraint(equalTo: viewEvolutions.topAnchor, constant: 20),
+            collectionEvolution.leadingAnchor.constraint(equalTo: viewEvolutions.leadingAnchor),
+            collectionEvolution.trailingAnchor.constraint(equalTo: viewEvolutions.trailingAnchor),
+            collectionEvolution.bottomAnchor.constraint(equalTo: viewEvolutions.bottomAnchor),
         ])
     }
 }

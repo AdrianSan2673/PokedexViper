@@ -32,7 +32,7 @@ class PokemonListView: UIViewController {
     
     lazy var labelRegion: UILabel = {
         let label = UILabel()
-        label.text = "First generation"
+        label.text = "Regions"
         label.font = .systemFont(ofSize: 25, weight: .bold)
         label.translatesAutoresizingMaskIntoConstraints = false
         label.numberOfLines = 0
@@ -78,7 +78,7 @@ class PokemonListView: UIViewController {
     lazy var regionTable: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
-        layout.itemSize = .init(width: 200, height: 200)
+        layout.itemSize = .init(width: 200, height: 150)
         
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.translatesAutoresizingMaskIntoConstraints = false
@@ -101,6 +101,8 @@ class PokemonListView: UIViewController {
         view.backgroundColor = .white
         setup()
         presenter.onViewAppear()
+        regionTable.dataSource = self
+        regionTable.delegate = self
         pokemonTable.dataSource = self
         pokemonTable.delegate = self
     }

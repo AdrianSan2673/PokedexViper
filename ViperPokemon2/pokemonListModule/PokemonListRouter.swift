@@ -10,21 +10,25 @@ import UIKit
 
 protocol PokemonListRouting: AnyObject {
     var detailRouter: PokemonDetailRouting? { get }
+    var regionsRouter: PokemonRegionsRouting? {get}
     var pokemonListView: PokemonListView? { get }
     
     func showPokemonList(window: UIWindow?)
-    func showPokemonDetail(whitPokemonId pokemonId: Int)
-
+    func showPokemonDetail(whitPokemonId pokemonId: Int,evolutionChain: [EvolutionChain])
+    func showPokemonRegions(regionId: Int)
 }
 
 class PokemonListRouter: PokemonListRouting {
-        
+
+    var regionsRouter: PokemonRegionsRouting?
+
     var detailRouter: PokemonDetailRouting?
     
     var pokemonListView: PokemonListView?
     
     func showPokemonList(window: UIWindow?) {
         self.detailRouter = PokemonDetailRouter()
+        self.regionsRouter = PokemonRegionsRouter()
         let interactor = PokemonListInteractor()
         let presenter = PokemonListPresenter(pokemonListInteractor: interactor, router: self)
         pokemonListView = PokemonListView(presenter: presenter)
@@ -40,10 +44,17 @@ class PokemonListRouter: PokemonListRouting {
                 window?.makeKeyAndVisible()
     }
     
-    func showPokemonDetail(whitPokemonId pokemonId: Int) {
+    func showPokemonDetail(whitPokemonId pokemonId: Int,evolutionChain: [EvolutionChain]) {
         guard let fromViewController = pokemonListView else {
             return
         }
-        detailRouter?.showDetail(fromViewController: fromViewController, withPokemon: pokemonId)
+        detailRouter?.showDetail(fromViewController: fromViewController, withPokemon: pokemonId, evolutionChain: evolutionChain)
+    }
+    
+    func showPokemonRegions(regionId: Int) {
+        guard let fromViewController = pokemonListView else {
+            return
+        }
+        regionsRouter?.showPokemonRegions(fromViewController: fromViewController, regionId: regionId)
     }
 }

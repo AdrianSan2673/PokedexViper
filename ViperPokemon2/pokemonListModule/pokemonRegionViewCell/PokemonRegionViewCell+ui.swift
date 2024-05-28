@@ -16,18 +16,14 @@ extension PokemonRegionViewCell {
     }
     
     func addSubviews() {
-        [labelRegionName, imageRegion].forEach(addSubview)
+        [labelRegionName].forEach(addSubview)
     }
     
     func configureConstraints(){
         NSLayoutConstraint.activate([
             labelRegionName.centerYAnchor.constraint(equalTo: centerYAnchor),
-            labelRegionName.leadingAnchor.constraint(equalTo: leadingAnchor),
-            labelRegionName.trailingAnchor.constraint(equalTo: imageRegion.leadingAnchor),
-            
-            imageRegion.centerYAnchor.constraint(equalTo: centerYAnchor),
-            imageRegion.leadingAnchor.constraint(equalTo: labelRegionName.trailingAnchor),
-            imageRegion.trailingAnchor.constraint(equalTo: trailingAnchor),
+            labelRegionName.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 10),
+            labelRegionName.trailingAnchor.constraint(equalTo: trailingAnchor),
         ])
     }
 }

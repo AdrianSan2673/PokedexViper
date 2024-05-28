@@ -13,6 +13,7 @@ protocol PokemonListPresentable: AnyObject {
     
     func onViewAppear()
     func onTapCell(atIndex: Int)
+    func onTapCellRegion(atIndex: Int)
 }
 
 protocol PokemonListUI: AnyObject {
@@ -20,7 +21,7 @@ protocol PokemonListUI: AnyObject {
 }
 
 class PokemonListPresenter: PokemonListPresentable {
-    
+
     weak var ui: PokemonListUI?
     
     private let pokemonListInteractor: PokemonListInteractable
@@ -47,7 +48,11 @@ class PokemonListPresenter: PokemonListPresentable {
     
     func onTapCell(atIndex: Int) {
         let pokemonId = models[atIndex].id ?? 0
-        router.showPokemonDetail(whitPokemonId: pokemonId)
-        //router.showPokemonDetail(withPokemonId: pokemonId?.description)
+        let evolution = models[atIndex].evolution ?? [EvolutionChain(id: "NA",name: "NA")]
+        router.showPokemonDetail(whitPokemonId: pokemonId, evolutionChain: evolution)
+    }
+    
+    func onTapCellRegion(atIndex: Int) {
+        router.showPokemonRegions(regionId: atIndex)
     }
 }

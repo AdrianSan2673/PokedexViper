@@ -7,16 +7,16 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "FF0F6833-56E0-4349-B179-7E9E9673F072"
+            uuid = "0CC95CD9-C8F4-470C-8860-4F120B3843F7"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "ViperPokemon2/PokemonDetailModule/PokemonDetailPresenter.swift"
+            filePath = "ViperPokemon2/PokemonRegionsModule/PokemonRegionsInteractor.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "45"
-            endingLineNumber = "45"
-            landmarkName = "onViewAppear()"
+            startingLineNumber = "19"
+            endingLineNumber = "19"
+            landmarkName = "getPokemonRegionsInteractor(region:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

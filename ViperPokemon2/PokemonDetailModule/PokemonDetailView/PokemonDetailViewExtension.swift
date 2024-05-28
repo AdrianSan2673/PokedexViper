@@ -63,6 +63,7 @@ extension PokemonDetailView: PokemonDetailPresenterUI {
             self.collectionType.reloadData()
             self.tableStats.reloadData()
             self.tableMoves.reloadData()
+            self.collectionEvolution.reloadData()
         }
     }
 }

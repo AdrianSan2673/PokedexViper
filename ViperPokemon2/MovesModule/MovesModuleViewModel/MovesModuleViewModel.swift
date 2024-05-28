@@ -9,13 +9,6 @@ import Foundation
 
 struct MovesModuleViewModel {
     var name: String?
-    var accuracy: Int?
-    var effectEntries: [EffectEntries]?
-    var flavorTextEntries: [FlavorTextEntries]?
-    var power: Int?
-    var pp: Int?
-    var priority: Int?
-    var contestType: Ability?
-    var damageClass: Ability?
-    var meta: MetaMoves?
+    var effectEntries: String?
+    var arrayEstadistcs: [String]?
 }

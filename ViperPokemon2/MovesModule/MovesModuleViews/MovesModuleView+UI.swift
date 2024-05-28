@@ -16,15 +16,8 @@ extension MovesModuleView {
     }
     
     func addSubViews(){
-        [labelPower,labelPP, labelPriority].forEach(stackHorizontal.addArrangedSubview)
         
-        [stackHorizontalStadisticsTitle,stackHorizontalStadisticsValue].forEach(stackVerticalStadistics.addArrangedSubview)
-        
-        [labelCritRate,labelDrain,labelFlinchChance].forEach(stackHorizontalStadisticsTitle.addArrangedSubview)
-        [labelCritRateValue,labelDrainValue,labelFlinchChanceValue].forEach(stackHorizontalStadisticsValue.addArrangedSubview)
-        
-        [labelMoveName,stackHorizontal, moveDescription, uiViewStadistics].forEach(view.addSubview)
-        uiViewStadistics.addSubview(stackVerticalStadistics)
+        [labelMoveName,moveDescription,collectionMoveStadistic].forEach(view.addSubview)
     }
     
     func setupConstraints(){
@@ -34,22 +27,15 @@ extension MovesModuleView {
             labelMoveName.bottomAnchor.constraint(equalTo: moveDescription
                 .topAnchor),
             
-            moveDescription.topAnchor.constraint(equalTo: labelMoveName.bottomAnchor, constant: 60),
+            moveDescription.topAnchor.constraint(equalTo: labelMoveName.bottomAnchor, constant: 90),
             moveDescription.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10),
             moveDescription.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -10),
-            moveDescription.bottomAnchor.constraint(equalTo: stackHorizontal.topAnchor),
+            moveDescription.bottomAnchor.constraint(equalTo: collectionMoveStadistic.topAnchor),
             
-            stackHorizontal.topAnchor.constraint(equalTo: moveDescription.bottomAnchor, constant: 10),
-            stackHorizontal.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            stackHorizontal.bottomAnchor.constraint(equalTo: stackVerticalStadistics.topAnchor),
-            
-            uiViewStadistics.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            uiViewStadistics.centerYAnchor.constraint(equalTo: view.centerYAnchor),
-            uiViewStadistics.leadingAnchor.constraint(equalTo: view.leadingAnchor,constant: 20),
-            uiViewStadistics.trailingAnchor.constraint(equalTo: view.trailingAnchor,constant: -20),
-            
-            stackHorizontalStadisticsValue.leadingAnchor.constraint(equalTo: stackVerticalStadistics.leadingAnchor, constant: 20),
-            stackHorizontalStadisticsValue.trailingAnchor.constraint(equalTo: stackVerticalStadistics.trailingAnchor, constant: -20),
+            collectionMoveStadistic.topAnchor.constraint(equalTo: moveDescription.bottomAnchor, constant: 20),
+            collectionMoveStadistic.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 15),
+            collectionMoveStadistic.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -15),
+            collectionMoveStadistic.bottomAnchor.constraint(equalTo: view.bottomAnchor),
         ])
     }
 }

@@ -12,7 +12,7 @@ protocol PokemonDetailRouting: AnyObject {
     var movesRouter: MovesModuleRouting? {get}
     var pokemonDetail: PokemonDetailView? {get}
     
-    func showDetail(fromViewController: UIViewController, withPokemon pokemonId: Int)
+    func showDetail(fromViewController: UIViewController, withPokemon pokemonId: Int, evolutionChain: [EvolutionChain])
     func showMovesModule(movesId: String)
 }
 
@@ -21,10 +21,10 @@ class PokemonDetailRouter: PokemonDetailRouting {
 
     var movesRouter: MovesModuleRouting?
     
-    func showDetail(fromViewController: UIViewController, withPokemon pokemonId: Int) {
+    func showDetail(fromViewController: UIViewController, withPokemon pokemonId: Int, evolutionChain: [EvolutionChain]) {
         self.movesRouter = MovesModuleRouter()
         let interactor = PokemonDetailInteractor()
-        let presenter = PokemonDetailPresenter(pokemonId: pokemonId, Interactor: interactor, mapper: PokemonDetailMapper(), router: self)
+        let presenter = PokemonDetailPresenter(pokemonId: pokemonId, Interactor: interactor, mapper: PokemonDetailMapper(), router: self, evolutionChain: evolutionChain)
         self.pokemonDetail = PokemonDetailView(presenter: presenter)
         presenter.ui = pokemonDetail
         
