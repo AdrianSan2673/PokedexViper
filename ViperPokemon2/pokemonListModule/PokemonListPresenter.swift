@@ -18,6 +18,7 @@ protocol PokemonListPresentable: AnyObject {
 
 protocol PokemonListUI: AnyObject {
     func update(pokemons: [PokemonListViewModel])
+    func updateError()
 }
 
 class PokemonListPresenter: PokemonListPresentable {
@@ -45,6 +46,8 @@ class PokemonListPresenter: PokemonListPresentable {
                 viewModels = models.map(mapper.map(entity:))
                 ui?.update(pokemons: viewModels)
             } catch {
+                viewModels = []
+                ui?.updateError()
                 print("hola mundo")
             }
         }

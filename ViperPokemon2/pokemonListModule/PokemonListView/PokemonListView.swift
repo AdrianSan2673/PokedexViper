@@ -86,6 +86,36 @@ class PokemonListView: UIViewController {
         return collectionView
     }()
     
+    lazy var errorView: UIView = {
+        let view = UIView()
+        let image = UIImageView()
+        let label = UILabel()
+        
+        view.translatesAutoresizingMaskIntoConstraints = false
+        image.translatesAutoresizingMaskIntoConstraints = false
+        label.translatesAutoresizingMaskIntoConstraints = false
+        
+        image.image = UIImage(named: "sleeping")
+        image.heightAnchor.constraint(equalToConstant: 127).isActive = true
+        image.widthAnchor.constraint(equalToConstant: 150).isActive = true
+        
+        label.text = "Pokemon Data Unavaible"
+        label.textAlignment = .center
+        label.numberOfLines = 0
+        label.textColor = .black
+        label.font = .systemFont(ofSize: 14, weight: .bold)
+        
+        [image, label].forEach(view.addSubview)
+        NSLayoutConstraint.activate([
+            image.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: -100),
+            image.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            
+            label.topAnchor.constraint(equalTo: image.bottomAnchor, constant: 8),
+            label.centerXAnchor.constraint(equalTo: image.centerXAnchor)
+        ])
+        return view
+    }()
+    
     let presenter: PokemonListPresentable
     
     init(presenter: PokemonListPresenter){

@@ -70,4 +70,12 @@ extension PokemonListView: PokemonListUI{
             self.regionTable.reloadData()
         }
     }
+    
+    func updateError(){
+        DispatchQueue.main.async {
+            self.errorView.isHidden = false
+            self.pokemonTable.reloadData()
+            self.regionTable.reloadData()
+        }
+    }
 }

@@ -15,8 +15,9 @@ extension PokemonListView {
     }
     
     func addSubViews(){
-        [labelQuestion,txtSearch,labelRegion,regionTable,labelGeneration,pokemonTable].forEach(scroll.addSubview)
+        [labelQuestion,txtSearch,labelRegion,regionTable,labelGeneration,pokemonTable,errorView].forEach(scroll.addSubview)
         [scroll].forEach(view.addSubview)
+        errorView.isHidden = true
     }
     
     func configurationConstraint(){
@@ -57,6 +58,11 @@ extension PokemonListView {
             pokemonTable.leadingAnchor.constraint(equalTo: view.leadingAnchor,constant: 5),
             pokemonTable.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -5),
             pokemonTable.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
+            
+            errorView.topAnchor.constraint(equalTo: labelGeneration.bottomAnchor),
+            errorView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            errorView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            errorView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
         ])
     }
 }
