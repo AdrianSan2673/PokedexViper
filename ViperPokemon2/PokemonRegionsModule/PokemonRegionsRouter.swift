@@ -9,28 +9,36 @@ import Foundation
 import UIKit
 
 protocol PokemonRegionsRouting: AnyObject {
-    //var pokemonDetailRouter: PokemonDetailRouting? {get} (EN CASO DE AGREGAR EL DETALLE DE ESPECIE)
+    var pokemonDetailRouter: PokemonDetailRouting? {get}
     var pokemonRegionsView: PokemonRegionsView? {get}
     
     func showPokemonRegions(fromViewController: UIViewController, regionId: Int)
-    //func showPokemonDetailEspecie  (EN CASO DE AGRGAR EL DETALLE DE ESPECIE)
+    
+    func showPokemonDetailRegions(pokemonName: String, evolutionChain: [EvolutionChain])
 }
 
 class PokemonRegionsRouter: PokemonRegionsRouting {
     
+    var pokemonDetailRouter: PokemonDetailRouting?
     var pokemonRegionsView: PokemonRegionsView?
     
     func showPokemonRegions(fromViewController: UIViewController, regionId: Int) {
+        self.pokemonDetailRouter = PokemonDetailRouter()
         let interactor = PokemonRegionsInteractor()
         let presenter = PokemonRegionsPresenter(pokemonRegionId: regionId, interactor: interactor, mapper: PokemonRegionsMapper(), router: self)
         self.pokemonRegionsView = PokemonRegionsView(presenter: presenter)
         presenter.ui = pokemonRegionsView
-        
         if let navigationController = fromViewController.navigationController{
-            navigationController.pushViewController(self.pokemonRegionsView ?? PokemonRegionsView(presenter: presenter
-                                                                                                 ), animated: true)
+            navigationController.pushViewController(self.pokemonRegionsView ?? PokemonRegionsView(presenter: presenter), animated: true)
         } else {
             print("Error: fromViewController is not embedded in a navigation controller.")
         }
+    }
+    
+    func showPokemonDetailRegions(pokemonName: String, evolutionChain: [EvolutionChain]) {
+        guard let fromViewController = pokemonRegionsView else {
+            return
+        }
+        pokemonDetailRouter?.showDetail(fromViewController: fromViewController, withPokemon: pokemonName, evolutionChain: [EvolutionChain(id: "NA",name: "NA"),EvolutionChain(id: "NA",name: "NA")])
     }
 }

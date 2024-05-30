@@ -16,7 +16,7 @@ protocol PokemonDetailPresenterUI: AnyObject{
 protocol PokemonDetailPresentable: AnyObject {
     var ui: PokemonDetailPresenterUI? {get}
     var viewModel : PokemonDetailViewModel {get}
-    var pokemonId: Int {get}
+    var pokemonId: String {get}
     var evolutionChain: [EvolutionChain] {get}
     
     func onViewAppear()
@@ -28,13 +28,13 @@ class PokemonDetailPresenter: PokemonDetailPresentable {
     var viewModel: PokemonDetailViewModel = PokemonDetailViewModel()
     weak var ui: PokemonDetailPresenterUI?
     
-    var pokemonId: Int
+    var pokemonId: String
     var evolutionChain: [EvolutionChain]
     private let interactor: PokemonDetailInteractable
     private let mapper: PokemonDetailMapper
     private let router: PokemonDetailRouting
     
-    init(pokemonId: Int, Interactor: PokemonDetailInteractable, mapper: PokemonDetailMapper, router: PokemonDetailRouter, evolutionChain: [EvolutionChain]) {
+    init(pokemonId: String, Interactor: PokemonDetailInteractable, mapper: PokemonDetailMapper, router: PokemonDetailRouter, evolutionChain: [EvolutionChain]) {
         self.pokemonId = pokemonId
         self.interactor = Interactor
         self.mapper = mapper
@@ -44,11 +44,13 @@ class PokemonDetailPresenter: PokemonDetailPresentable {
     
     func onViewAppear() {
         Task {
-            let model = await interactor.getPokemonDetail(withId: pokemonId)
+            let model = await interactor.getPokemonDetail(withId: "\(pokemonId)")
             viewModel = mapper.map(entity: model)
             await MainActor.run {
                 self.ui?.updateUI(viewModel: viewModel)
-                
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.5, execute: {
+                    self.router.dismissLoading()
+                })
             }
         }
     }

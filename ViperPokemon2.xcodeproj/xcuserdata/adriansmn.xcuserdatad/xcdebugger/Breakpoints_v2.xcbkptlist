@@ -7,16 +7,32 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "0CC95CD9-C8F4-470C-8860-4F120B3843F7"
+            uuid = "05E34D60-039D-4871-A1F3-A14F9DB6EEDB"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "ViperPokemon2/PokemonRegionsModule/PokemonRegionsInteractor.swift"
+            filePath = "ViperPokemon2/PokemonDetailModule/PokemonDetailRouter.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "19"
-            endingLineNumber = "19"
-            landmarkName = "getPokemonRegionsInteractor(region:)"
+            startingLineNumber = "58"
+            endingLineNumber = "58"
+            landmarkName = "routeToLoading()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "91134F21-B264-48B6-B216-224ED1D15EB9"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ViperPokemon2/PokemonDetailModule/PokemonDetailRouter.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "70"
+            endingLineNumber = "70"
+            landmarkName = "dismissLoading()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

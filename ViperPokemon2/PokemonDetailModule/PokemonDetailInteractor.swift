@@ -8,18 +8,15 @@
 import Foundation
 
 protocol PokemonDetailInteractable: AnyObject {
-    func getPokemonDetail(withId id: Int) async -> PokemonDetailEntity
+    func getPokemonDetail(withId id: String) async -> PokemonDetailEntity
 }
 
 class PokemonDetailInteractor: PokemonDetailInteractable {
-    func getPokemonDetail(withId id: Int) async -> PokemonDetailEntity {
+    
+    func getPokemonDetail(withId id: String) async -> PokemonDetailEntity {
         let url = URL(string: "https://pokeapi.co/api/v2/pokemon/\(id)")!
         let (data, _) = try! await URLSession.shared.data(from: url)
         let jsonDecoder = JSONDecoder()
         return try! jsonDecoder.decode(PokemonDetailEntity.self, from: data)
     }
-    
-    /*func getPokemonEspecies(withName name: String) async -> PokemonEspeciesEntity {
-        let url = URL(string: "https://pokeapi.co/api/v2/pokemon-species/\(name)")!
-    }*/
 }

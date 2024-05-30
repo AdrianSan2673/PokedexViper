@@ -40,16 +40,20 @@ class PokemonListPresenter: PokemonListPresentable {
     
     func onViewAppear() {
         Task {
-            models = try await pokemonListInteractor.getPokemonListInteractor()
-            viewModels = models.map(mapper.map(entity:))
-            ui?.update(pokemons: viewModels)
+            do {
+                models = try await pokemonListInteractor.getPokemonListInteractor()
+                viewModels = models.map(mapper.map(entity:))
+                ui?.update(pokemons: viewModels)
+            } catch {
+                print("hola mundo")
+            }
         }
     }
     
     func onTapCell(atIndex: Int) {
         let pokemonId = models[atIndex].id ?? 0
         let evolution = models[atIndex].evolution ?? [EvolutionChain(id: "NA",name: "NA")]
-        router.showPokemonDetail(whitPokemonId: pokemonId, evolutionChain: evolution)
+        router.showPokemonDetail(whitPokemonId: "\(pokemonId)", evolutionChain: evolution)
     }
     
     func onTapCellRegion(atIndex: Int) {

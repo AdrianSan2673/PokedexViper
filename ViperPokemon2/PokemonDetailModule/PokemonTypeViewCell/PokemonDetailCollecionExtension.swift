@@ -21,7 +21,6 @@ extension PokemonDetailView: UICollectionViewDataSource {
             }
             cell.layer.cornerRadius = 10
             cell.layer.masksToBounds = true
-            cell.backgroundColor = .red
             if let model = presenter.viewModel.types?[indexPath.row] {
                 cell.configure(model: model)
             }
@@ -32,19 +31,14 @@ extension PokemonDetailView: UICollectionViewDataSource {
             }
             cell.layer.cornerRadius = 10
             cell.layer.masksToBounds = true
-            cell.backgroundColor = .red
-            cell.backgroundColor = .lightGray
-            cell.configure(region: presenter.evolutionChain[indexPath.row].name ?? "NA")
-            
+            if let model = presenter.evolutionChain[indexPath.row].name {
+                cell.configure(region: model)
+            }
             return cell
         } else {
             return UICollectionViewCell()
         }
     }
-}
-
-extension PokemonDetailView: UICollectionViewDelegate {
-    
 }
 
 extension PokemonDetailView: UICollectionViewDelegateFlowLayout {

@@ -18,6 +18,7 @@ protocol PokemonRegionsPresentable: AnyObject {
     var pokemonRegionId: Int {get}
     
     func onViewAppear()
+    func onTapCell(atIndex: Int)
 }
 
 class PokemonRegionsPresenter: PokemonRegionsPresentable {
@@ -45,5 +46,10 @@ class PokemonRegionsPresenter: PokemonRegionsPresentable {
                 self.ui?.updateUI(viewModel: viewModel)
             }
         }
+    }
+    
+    func onTapCell(atIndex: Int){
+        let pokemonName = viewModel.pokemonEntries?[atIndex].pokemonSpecies?.name ?? "NA"
+        router.showPokemonDetailRegions(pokemonName: pokemonName, evolutionChain: [EvolutionChain(id: "NA",name: "NA")])
     }
 }

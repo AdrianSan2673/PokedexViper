@@ -19,15 +19,18 @@ extension PokemonRegionsView: UITableViewDataSource {
         }
         if let model = presenter.viewModel.pokemonEntries?[indexPath.row] {
             cell.configureRegions(model: model)
-            print(model)
         }
         return cell
     }
 }
 
-extension PokemonRegionsView: UITableViewDelegate {}
+extension PokemonRegionsView: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        presenter.onTapCell(atIndex: indexPath.row)
+    }
+}
 
-extension PokemonRegionsView: PokemonRegionsPresenterUI{
+extension PokemonRegionsView: PokemonRegionsPresenterUI {
     func updateUI(viewModel: PokemonRegionsViewModel) {
         switch presenter.pokemonRegionId {
         case 0:
