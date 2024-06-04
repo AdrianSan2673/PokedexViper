@@ -31,6 +31,14 @@ extension PokemonRegionsView: UITableViewDelegate {
 }
 
 extension PokemonRegionsView: PokemonRegionsPresenterUI {
+    func errorMessage() {
+        DispatchQueue.main.async {
+            let customAlert = CustomAlertMessageViewController(ModalTitle: "No found",ModalDescription: "Unavaible data",buttonTitle: "Accept",customAlertDelegate: self)
+            customAlert.modalPresentationStyle = .custom
+            self.present(customAlert, animated: true)
+        }
+    }
+    
     func updateUI(viewModel: PokemonRegionsViewModel) {
         switch presenter.pokemonRegionId {
         case 0:
@@ -56,6 +64,20 @@ extension PokemonRegionsView: PokemonRegionsPresenterUI {
         }
         DispatchQueue.main.async {
             self.tablePokemonRegion.reloadData()
+        }
+    }
+}
+
+extension PokemonRegionsView: CustomAlertDelegate {
+    func onClick(_ customAlertViewController: CustomAlertMessageViewController) {
+        DispatchQueue.main.async {
+            self.navigationController?.popViewController(animated: true)
+        }
+    }
+    
+    func onClose(_ customAlertViewController: CustomAlertMessageViewController) {
+        DispatchQueue.main.async {
+            self.navigationController?.popViewController(animated: true)
         }
     }
 }

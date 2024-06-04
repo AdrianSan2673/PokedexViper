@@ -10,6 +10,7 @@ import UIKit
 
 protocol PokemonRegionsPresenterUI: AnyObject {
     func updateUI(viewModel: PokemonRegionsViewModel)
+    func errorMessage()
 }
 
 protocol PokemonRegionsPresentable: AnyObject {
@@ -40,10 +41,14 @@ class PokemonRegionsPresenter: PokemonRegionsPresentable {
     
     func onViewAppear() {
         Task {
-            let model = await interactor.getPokemonRegionsInteractor(region: pokemonRegionId)
-            viewModel = mapper.map(entity: model)
-            await MainActor.run {
-                self.ui?.updateUI(viewModel: viewModel)
+            do {
+                let model = try await interactor.getPokemonRegionsInteractor(region: pokemonRegionId)
+                viewModel = mapper.map(entity: model)
+                await MainActor.run {
+                    self.ui?.updateUI(viewModel: viewModel)
+                }
+            } catch {
+                self.ui?.errorMessage()
             }
         }
     }

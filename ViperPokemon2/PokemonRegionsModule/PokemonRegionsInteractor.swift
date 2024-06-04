@@ -8,11 +8,12 @@
 import Foundation
 
 protocol PokemonRegionsInteractable: AnyObject {
-    func getPokemonRegionsInteractor(region: Int) async -> PokemonRegionsEntity
+    func getPokemonRegionsInteractor(region: Int) async throws -> PokemonRegionsEntity
 }
 
 class PokemonRegionsInteractor: PokemonRegionsInteractable {
-    func getPokemonRegionsInteractor(region: Int) async -> PokemonRegionsEntity {
+    func getPokemonRegionsInteractor(region: Int) async throws -> PokemonRegionsEntity {
+        var pokemonList: PokemonRegionsEntity?
         var regionAux = 1
         switch region {
         case 0:
@@ -36,9 +37,36 @@ class PokemonRegionsInteractor: PokemonRegionsInteractable {
         default:
             regionAux = 2
         }
+        
         let url = URL(string: "https://pokeapi.co/api/v2/pokedex/\(regionAux)")!
-        let (data, _) = try! await URLSession.shared.data(from: url)
-        let jsonDecoder = JSONDecoder()
-        return try! jsonDecoder.decode(PokemonRegionsEntity.self, from: data)
-    } 
+        return try await withCheckedThrowingContinuation { continuation in
+            let task = URLSession.shared.dataTask(with: url) { data, response, error in
+                if let error = error {
+                    continuation.resume(with: .failure(error))
+                    return
+                }
+                if let response = (response as? HTTPURLResponse), response.statusCode != 200 {
+                    continuation.resume(with: .failure(error ?? SessionError.apiError))
+                    return
+                }
+                guard let responseData = data else {
+                    continuation.resume(with: .failure(error ?? SessionError.invalidResponse))
+                    return
+                }
+                do {
+                    Task{
+                        switch try await Utils.shared.parsearJson(PokemonRegionsEntity.self,data: responseData) {
+                        case .success(let pokemonResult):
+                            continuation.resume(with: .success(pokemonResult))
+                        case .failure(let error):
+                            continuation.resume(with: .failure(error))
+                        }
+                    }
+                } catch {
+                    continuation.resume(with: .failure(SessionError.invalidResponse))
+                }
+            }
+            task.resume()
+        }
+    }
 }

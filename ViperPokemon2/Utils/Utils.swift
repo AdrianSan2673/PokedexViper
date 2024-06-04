@@ -39,7 +39,16 @@ class Utils {
             alpha: CGFloat(1.0)
         )
     }
+    
+    func parsearJson<T: Decodable>(_ dynamicType: T.Type, data: Data) async throws -> Result<T,Error> {
+        let decoder = JSONDecoder()
+        //let dataDecoded = try decoder.decode(T.self, from: data)
+        //return .success(dataDecoded)
+        return Result { try decoder.decode(T.self, from: data)}
+    }
 }
+
+public typealias RequestResult<T: Decodable> = Result<T, Error>
 
 enum SessionError: Error {
     case apiError
@@ -68,14 +77,11 @@ enum SessionError: Error {
     }
 }
 
-public typealias RequestResult<T: Decodable> = Result<T, Error>
-
-
-
 enum EndPoints: String {
     case pokemonApi = "https://pokedex-bb36f.firebaseio.com/pokemon.json"
     case pokemonMoves = "move/"
     case pokemonPokemon = "pokemon/"
+    case pokemonRegion = "pokedex/"
 }
 
 extension Data {

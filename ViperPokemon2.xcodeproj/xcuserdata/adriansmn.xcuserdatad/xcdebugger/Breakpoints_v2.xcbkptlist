@@ -36,5 +36,84 @@
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "3B4B77DF-38F9-4FB3-AF51-03C02D42E95D"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ViperPokemon2/PokemonRegionsModule/PokemonRegionsPresenter.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "51"
+            endingLineNumber = "51"
+            landmarkName = "onViewAppear()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "E8F69AFB-4885-4F76-A23F-9C9E2329489B"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ViperPokemon2/PokemonRegionsModule/PokemonRegionsView/PokemonRegionsViewExtension.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "35"
+            endingLineNumber = "35"
+            landmarkName = "errorMessage()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "E8F69AFB-4885-4F76-A23F-9C9E2329489B - cae899c8e3e22196"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "ViperPokemon2.PokemonRegionsView.errorMessage() -&gt; ()"
+                  moduleName = "ViperPokemon2"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/adriansmn/Documents/Xcode_Project/EJERCICIOS_DE_VIPER/ViperPokemon2/ViperPokemon2/PokemonRegionsModule/PokemonRegionsView/PokemonRegionsViewExtension.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "35"
+                  endingLineNumber = "35"
+                  offsetFromSymbolStart = "164">
+               </Location>
+               <Location
+                  uuid = "E8F69AFB-4885-4F76-A23F-9C9E2329489B - f1db8d3832ae5fe0"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 @Swift.MainActor () -&gt; () in ViperPokemon2.PokemonRegionsView.errorMessage() -&gt; ()"
+                  moduleName = "ViperPokemon2"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/adriansmn/Documents/Xcode_Project/EJERCICIOS_DE_VIPER/ViperPokemon2/ViperPokemon2/PokemonRegionsModule/PokemonRegionsView/PokemonRegionsViewExtension.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "35"
+                  endingLineNumber = "35"
+                  offsetFromSymbolStart = "36">
+               </Location>
+               <Location
+                  uuid = "E8F69AFB-4885-4F76-A23F-9C9E2329489B - f1db8d3832ae5fe0"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 @Swift.MainActor () -&gt; () in ViperPokemon2.PokemonRegionsView.errorMessage() -&gt; ()"
+                  moduleName = "ViperPokemon2"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/adriansmn/Documents/Xcode_Project/EJERCICIOS_DE_VIPER/ViperPokemon2/ViperPokemon2/PokemonRegionsModule/PokemonRegionsView/PokemonRegionsViewExtension.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "35"
+                  endingLineNumber = "35"
+                  offsetFromSymbolStart = "52">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
    </Breakpoints>
 </Bucket>
