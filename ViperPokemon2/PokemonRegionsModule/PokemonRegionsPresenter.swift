@@ -46,9 +46,15 @@ class PokemonRegionsPresenter: PokemonRegionsPresentable {
                 viewModel = mapper.map(entity: model)
                 await MainActor.run {
                     self.ui?.updateUI(viewModel: viewModel)
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.5, execute: {
+                        self.router.dismissLoading()
+                    })
                 }
             } catch {
-                self.ui?.errorMessage()
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.6, execute: {
+                    self.router.dismissLoading()
+                    self.ui?.errorMessage()
+                })
             }
         }
     }

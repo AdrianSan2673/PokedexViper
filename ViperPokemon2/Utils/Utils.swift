@@ -93,3 +93,9 @@ extension Data {
         return data
     }
 }
+
+extension String {
+    static var empty: String {
+        return ""
+    }
+}

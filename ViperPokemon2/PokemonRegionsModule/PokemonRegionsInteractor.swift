@@ -38,7 +38,7 @@ class PokemonRegionsInteractor: PokemonRegionsInteractable {
             regionAux = 2
         }
         
-        let url = URL(string: "https://pokeapi.co/api/v2/pokedex/\(regionAux)")!
+        let url = URL(string: Utils.shared.constantURLPokemonAPI + EndPoints.pokemonRegion.rawValue + String(regionAux))!
         return try await withCheckedThrowingContinuation { continuation in
             let task = URLSession.shared.dataTask(with: url) { data, response, error in
                 if let error = error {

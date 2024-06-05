@@ -39,24 +39,8 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "3B4B77DF-38F9-4FB3-AF51-03C02D42E95D"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "ViperPokemon2/PokemonRegionsModule/PokemonRegionsPresenter.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "51"
-            endingLineNumber = "51"
-            landmarkName = "onViewAppear()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             uuid = "E8F69AFB-4885-4F76-A23F-9C9E2329489B"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ViperPokemon2/PokemonRegionsModule/PokemonRegionsView/PokemonRegionsViewExtension.swift"
@@ -113,6 +97,194 @@
                   offsetFromSymbolStart = "52">
                </Location>
             </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "D4F0F9E4-6374-421B-97E7-C89D50DB8DC6"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ViperPokemon2/PokemonRegionsModule/PokemonRegionsPresenter.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "54"
+            endingLineNumber = "54"
+            landmarkName = "onViewAppear()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "D4F0F9E4-6374-421B-97E7-C89D50DB8DC6 - 584aeccc40be3097"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(6) suspend resume partial function for closure #1 @Sendable () async -&gt; () in ViperPokemon2.PokemonRegionsPresenter.onViewAppear() -&gt; ()"
+                  moduleName = "ViperPokemon2"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/adriansmn/Documents/Xcode_Project/EJERCICIOS_DE_VIPER/ViperPokemon2/ViperPokemon2/PokemonRegionsModule/PokemonRegionsPresenter.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "54"
+                  endingLineNumber = "54"
+                  offsetFromSymbolStart = "240">
+               </Location>
+               <Location
+                  uuid = "D4F0F9E4-6374-421B-97E7-C89D50DB8DC6 - 7fae841136436951"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #2 @Swift.MainActor @Sendable () -&gt; () in closure #1 @Sendable () async -&gt; () in ViperPokemon2.PokemonRegionsPresenter.onViewAppear() -&gt; ()"
+                  moduleName = "ViperPokemon2"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/adriansmn/Documents/Xcode_Project/EJERCICIOS_DE_VIPER/ViperPokemon2/ViperPokemon2/PokemonRegionsModule/PokemonRegionsPresenter.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "54"
+                  endingLineNumber = "54"
+                  offsetFromSymbolStart = "32">
+               </Location>
+               <Location
+                  uuid = "D4F0F9E4-6374-421B-97E7-C89D50DB8DC6 - 584aeccc40be3097"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(6) suspend resume partial function for closure #1 @Sendable () async -&gt; () in ViperPokemon2.PokemonRegionsPresenter.onViewAppear() -&gt; ()"
+                  moduleName = "ViperPokemon2"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/adriansmn/Documents/Xcode_Project/EJERCICIOS_DE_VIPER/ViperPokemon2/ViperPokemon2/PokemonRegionsModule/PokemonRegionsPresenter.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "54"
+                  endingLineNumber = "54"
+                  offsetFromSymbolStart = "148">
+               </Location>
+               <Location
+                  uuid = "D4F0F9E4-6374-421B-97E7-C89D50DB8DC6 - 584aeccc40be3097"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(6) suspend resume partial function for closure #1 @Sendable () async -&gt; () in ViperPokemon2.PokemonRegionsPresenter.onViewAppear() -&gt; ()"
+                  moduleName = "ViperPokemon2"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/adriansmn/Documents/Xcode_Project/EJERCICIOS_DE_VIPER/ViperPokemon2/ViperPokemon2/PokemonRegionsModule/PokemonRegionsPresenter.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "54"
+                  endingLineNumber = "54"
+                  offsetFromSymbolStart = "224">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "AEBDD981-19DE-4108-856F-F2F0FD5220D7"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ViperPokemon2/PokemonRegionsModule/PokemonRegionsPresenter.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "45"
+            endingLineNumber = "45"
+            landmarkName = "onViewAppear()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "AEBDD981-19DE-4108-856F-F2F0FD5220D7 - 36af35e96fb311a1"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(1) suspend resume partial function for closure #1 @Sendable () async -&gt; () in ViperPokemon2.PokemonRegionsPresenter.onViewAppear() -&gt; ()"
+                  moduleName = "ViperPokemon2"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/adriansmn/Documents/Xcode_Project/EJERCICIOS_DE_VIPER/ViperPokemon2/ViperPokemon2/PokemonRegionsModule/PokemonRegionsPresenter.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "45"
+                  endingLineNumber = "45"
+                  offsetFromSymbolStart = "64">
+               </Location>
+               <Location
+                  uuid = "AEBDD981-19DE-4108-856F-F2F0FD5220D7 - bf6cf84fbdd75689"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(2) await resume partial function for closure #1 @Sendable () async -&gt; () in ViperPokemon2.PokemonRegionsPresenter.onViewAppear() -&gt; ()"
+                  moduleName = "ViperPokemon2"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/adriansmn/Documents/Xcode_Project/EJERCICIOS_DE_VIPER/ViperPokemon2/ViperPokemon2/PokemonRegionsModule/PokemonRegionsPresenter.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "45"
+                  endingLineNumber = "45"
+                  offsetFromSymbolStart = "40">
+               </Location>
+               <Location
+                  uuid = "AEBDD981-19DE-4108-856F-F2F0FD5220D7 - 70ec8890c7d051af"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(3) suspend resume partial function for closure #1 @Sendable () async -&gt; () in ViperPokemon2.PokemonRegionsPresenter.onViewAppear() -&gt; ()"
+                  moduleName = "ViperPokemon2"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/adriansmn/Documents/Xcode_Project/EJERCICIOS_DE_VIPER/ViperPokemon2/ViperPokemon2/PokemonRegionsModule/PokemonRegionsPresenter.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "45"
+                  endingLineNumber = "45"
+                  offsetFromSymbolStart = "76">
+               </Location>
+               <Location
+                  uuid = "AEBDD981-19DE-4108-856F-F2F0FD5220D7 - 584aeccc40be31ac"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(6) suspend resume partial function for closure #1 @Sendable () async -&gt; () in ViperPokemon2.PokemonRegionsPresenter.onViewAppear() -&gt; ()"
+                  moduleName = "ViperPokemon2"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/adriansmn/Documents/Xcode_Project/EJERCICIOS_DE_VIPER/ViperPokemon2/ViperPokemon2/PokemonRegionsModule/PokemonRegionsPresenter.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "45"
+                  endingLineNumber = "45"
+                  offsetFromSymbolStart = "160">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "4AE1AD99-2BA2-4345-A045-278A8D53F10E"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ViperPokemon2/PokemonRegionsModule/PokemonRegionsRouter.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "32"
+            endingLineNumber = "32"
+            landmarkName = "showPokemonRegions(fromViewController:regionId:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "14344484-0440-4790-8137-6BA35FB33078"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ViperPokemon2/PokemonRegionsModule/PokemonRegionsPresenter.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "55"
+            endingLineNumber = "55"
+            landmarkName = "onViewAppear()"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

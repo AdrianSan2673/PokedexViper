@@ -11,6 +11,7 @@ import UIKit
 protocol PokemonDetailPresenterUI: AnyObject{
     func updateUI(viewModel: PokemonDetailViewModel)
     func setBackgroundColorDetail(pokemonType: String)
+    func errorMessage()
 }
 
 protocol PokemonDetailPresentable: AnyObject {
@@ -44,14 +45,22 @@ class PokemonDetailPresenter: PokemonDetailPresentable {
     
     func onViewAppear() {
         Task {
-            let model = await interactor.getPokemonDetail(withId: "\(pokemonId)")
-            viewModel = mapper.map(entity: model)
-            await MainActor.run {
-                self.ui?.updateUI(viewModel: viewModel)
-                DispatchQueue.main.asyncAfter(deadline: .now() + 0.5, execute: {
+            do {
+                let model = try await interactor.getPokemonDetail(withId: "\(pokemonId)")
+                viewModel = mapper.map(entity: model)
+                await MainActor.run {
+                    self.ui?.updateUI(viewModel: viewModel)
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.5, execute: {
+                        self.router.dismissLoading()
+                    })
+                }
+            } catch {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.6, execute: {
                     self.router.dismissLoading()
+                    self.ui?.errorMessage()
                 })
             }
+            
         }
     }
     
