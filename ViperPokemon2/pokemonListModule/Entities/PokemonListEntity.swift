@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct PokemonListEntity: Decodable {
+struct PokemonListEntity: Codable {
     var attack: Int?
     var defense: Int?
     var description: String?
@@ -25,7 +25,7 @@ struct PokemonListEntity: Decodable {
     }
 }
 
-struct EvolutionChain: Decodable {
+struct EvolutionChain: Codable {
     var id: String?
     var name: String?
 }

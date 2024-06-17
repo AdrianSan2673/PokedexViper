@@ -3,7 +3,6 @@
 //  ViperPokemon2
 //
 //  Created by Adrian San Martin on 02/05/24.
-//
 
 import Foundation
 import UIKit
@@ -17,6 +16,8 @@ class Utils {
     private init(){}
     
     let constantURLPokemonAPI = "https://pokeapi.co/api/v2/"
+    
+    private let urlSession = URLSession.shared
     
     func hexStringToUIColor (hex:String) -> UIColor {
         var cString:String = hex.trimmingCharacters(in: .whitespacesAndNewlines).uppercased()
@@ -40,10 +41,143 @@ class Utils {
         )
     }
     
+    func loadURLAndDecodePokeApi<T: Codable>(url: URL, params: [String: String]? = nil, completion: @escaping (T?, SessionError?) -> ()) {
+        
+        //save URL
+
+        guard var urlComponents = URLComponents(url: url, resolvingAgainstBaseURL: false) else {
+            completion(nil, .invalidEndPoint)
+            return
+        }
+        
+        //Recive params and quaryItems
+        if let params = params {
+            urlComponents.queryItems = params.map { URLQueryItem(name: $0.key, value: $0.key) }
+        }
+        
+        // complete final url
+        guard let finalURL = urlComponents.url else {
+            completion(nil, .invalidEndPoint)
+            return
+        }
+        
+        //start task
+        urlSession.dataTask(with: url) { [weak self] (data, response, error) in
+            guard let self = self else {return}
+            if error != nil {
+                completion(nil, .apiError)
+                return
+            }
+            
+            guard let httpResponse = response as? HTTPURLResponse, 200..<300 ~= httpResponse.statusCode else {
+                completion(nil, .invalidResponse)
+                return
+            }
+            
+            guard let data = data else {
+                completion(nil, .noData)
+                return
+            }
+            let decodificador = JSONDecoder()
+            do {
+                let decodeResponse = try decodificador.decode(T.self, from: data)
+                completion(decodeResponse, nil)
+            } catch let decodingError as DecodingError {
+                switch decodingError {
+                    case .typeMismatch(let type, let context):
+                            print("Type mismatch error: \(type), context: \(context)")
+                            completion(nil,.typeMismatch)
+                    case .keyNotFound(let key, let context):
+                            print("Key not found error: \(key), context: \(context)")
+                            completion(nil, .keyNotFound)
+                    case .valueNotFound(let type, let context):
+                            print("Value not found error: \(type), context: \(context)")
+                            completion(nil, .valueNotFound)
+                    case .dataCorrupted(let context):
+                            print("Data corrupted error, context: \(context)")
+                            completion(nil, .invalidResponse)
+                    default:
+                            print("Decoding error: \(decodingError)")
+                            completion(nil, .serializationError)
+                    }
+            } catch {
+                completion(nil, .serializationError)
+            }
+        }.resume()
+    }
+    
+    func loadURLAndDecodeAPIList<T: Codable>(url: URL, params: [String: String]? = nil, completion: @escaping (T?, SessionError?) -> ()) {
+        
+        //save URL
+        guard var urlComponents = URLComponents(url: url, resolvingAgainstBaseURL: false) else {
+            completion(nil, .invalidEndPoint)
+            return
+        }
+        
+        //Recive params and quaryItems
+        if let params = params {
+            urlComponents.queryItems = params.map { URLQueryItem(name: $0.key, value: $0.key) }
+        }
+        
+        // complete final url
+        guard let finalURL = urlComponents.url else {
+            completion(nil, .invalidEndPoint)
+            return
+        }
+        
+        //start task
+        urlSession.dataTask(with: url) { [weak self] (data, response, error) in
+            guard let self = self else {return}
+            if error != nil {
+                completion(nil, .apiError)
+                return
+            }
+            
+            guard let httpResponse = response as? HTTPURLResponse, 200..<300 ~= httpResponse.statusCode else {
+                completion(nil, .invalidResponse)
+                return
+            }
+            
+            guard let data = data else {
+                completion(nil, .noData)
+                return
+            }
+            let decodificador = JSONDecoder()
+            do {
+                
+                if let safeData = data.parseData(quitarString: "null,") {
+                    let decodeResponse = try decodificador.decode(T.self, from: safeData) 
+                    completion(decodeResponse, nil)
+                } else {
+                    completion(nil, .invalidResponse)
+                }
+                
+            } catch let decodingError as DecodingError {
+                switch decodingError {
+                    case .typeMismatch(let type, let context):
+                            print("Type mismatch error: \(type), context: \(context)")
+                            completion(nil,.typeMismatch)
+                    case .keyNotFound(let key, let context):
+                            print("Key not found error: \(key), context: \(context)")
+                            completion(nil, .keyNotFound)
+                    case .valueNotFound(let type, let context):
+                            print("Value not found error: \(type), context: \(context)")
+                            completion(nil, .valueNotFound)
+                    case .dataCorrupted(let context):
+                            print("Data corrupted error, context: \(context)")
+                            completion(nil, .invalidResponse)
+                    default:
+                            print("Decoding error: \(decodingError)")
+                            completion(nil, .serializationError)
+                    }
+            } catch {
+                completion(nil, .serializationError)
+            }
+        }.resume()
+    }
+    
     func parsearJson<T: Decodable>(_ dynamicType: T.Type, data: Data) async throws -> Result<T,Error> {
         let decoder = JSONDecoder()
-        //let dataDecoded = try decoder.decode(T.self, from: data)
-        //return .success(dataDecoded)
         return Result { try decoder.decode(T.self, from: data)}
     }
 }
@@ -91,6 +225,15 @@ extension Data {
         
         guard let data = parseDataString?.data(using: .utf8) else {return nil}
         return data
+    }
+    
+    func haveNull(checkString word: String) -> Bool {
+        let dataAsString = String(data: self, encoding: .utf8)
+        if ((dataAsString?.starts(with: word)) != nil) {
+            return true
+        } else {
+            return false
+        }
     }
 }
 

@@ -22,7 +22,7 @@ class PokemonListViewCell : UICollectionViewCell {
     let labelPokemonId: UILabel = {
         let label = UILabel()
         label.numberOfLines = 0
-        label.font = .systemFont(ofSize: 15, weight: .regular)
+        label.font = .systemFont(ofSize: 15, weight: .bold)
         label.translatesAutoresizingMaskIntoConstraints = false
         label.backgroundColor = .lightGray
         label.textColor = .white
@@ -34,7 +34,7 @@ class PokemonListViewCell : UICollectionViewCell {
     let labelPokemonName: UILabel = {
         let label = UILabel()
         label.numberOfLines = 0
-        label.font = .systemFont(ofSize: 14, weight: .regular)
+        label.font = .systemFont(ofSize: 14, weight: .bold)
         label.translatesAutoresizingMaskIntoConstraints = false
         label.layer.masksToBounds = true
         label.backgroundColor = .lightGray
@@ -47,7 +47,7 @@ class PokemonListViewCell : UICollectionViewCell {
     let labeltype: UILabel = {
         let label = UILabel()
         label.numberOfLines = 0
-        label.font = .systemFont(ofSize: 15, weight: .regular)
+        label.font = .systemFont(ofSize: 15, weight: .bold)
         label.textColor = .white
         label.translatesAutoresizingMaskIntoConstraints = false
         label.layer.masksToBounds = true

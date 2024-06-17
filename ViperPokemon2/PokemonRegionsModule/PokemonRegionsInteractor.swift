@@ -38,7 +38,9 @@ class PokemonRegionsInteractor: PokemonRegionsInteractable {
             regionAux = 2
         }
         
-        let url = URL(string: Utils.shared.constantURLPokemonAPI + EndPoints.pokemonRegion.rawValue + String(regionAux))!
+        guard let url = URL(string: Utils.shared.constantURLPokemonAPI + EndPoints.pokemonRegion.rawValue + String(regionAux)) else {
+            throw SessionError.invalidEndPoint
+        }
         return try await withCheckedThrowingContinuation { continuation in
             let task = URLSession.shared.dataTask(with: url) { data, response, error in
                 if let error = error {

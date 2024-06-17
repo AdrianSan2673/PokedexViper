@@ -16,32 +16,20 @@ class PokemonListInteractor: PokemonListInteractable {
     var listPokemon: [PokemonListEntity] = []
     
     func getPokemonListInteractor() async throws -> [PokemonListEntity] {
-        //guard let url = URL(string: endPoints.pokemonApi.rawValue) else { return }
-        let url = URL(string: EndPoints.pokemonApi.rawValue)!
-        //let session = URLSession(configuration: .default)
-        
+    
+        guard let url = URL(string: EndPoints.pokemonApi.rawValue) else {
+            throw SessionError.invalidEndPoint
+        }
         return try await withCheckedThrowingContinuation { continuation in
-            let task = URLSession.shared.dataTask(with: url) { data, response, error in
-                if let error = error {
-                    continuation.resume(with: .failure(error))
-                    return
-                }
-                if let response = (response as? HTTPURLResponse), response.statusCode != 200 {
-                    continuation.resume(with: .failure(error ?? SessionError.apiError))
-                    return
-                }
-                do {
-                    if let safeData = data?.parseData(quitarString: "null,") {
-                        if let pokeList = self.parsearJSON(datosPokemon: safeData) {
-                            self.listPokemon = pokeList
-                            continuation.resume(with: .success(self.listPokemon))
-                        }
-                    }
-                } catch {
-                    continuation.resume(with: .failure(error))
+            Utils.shared.loadURLAndDecodeAPIList(url: url) { (result: [PokemonListEntity]?, error: SessionError?) in
+                if let data = result {
+                    continuation.resume(returning: .init(data))
+                } else if let sessionError = error {
+                    continuation.resume(throwing: sessionError)
+                } else {
+                    continuation.resume(throwing: SessionError.invalidEndPoint)
                 }
             }
-            task.resume()
         }
     }
     

@@ -37,11 +37,13 @@ class MovesModulePresenter: MovesModulePresentable {
     
     func onViewAppear() {
         Task {
-            let model = await self.interactor.getMovesDetails(id: self.moveId)
-            viewModel = mapper.map(entity: model)
-            await MainActor.run {
-                ui?.updateUI(viewModel: viewModel)
-                print("Pokemon Moves \(viewModel)")
+            do {
+                let model = try await self.interactor.getMovesDetails(id: self.moveId)
+                viewModel = mapper.map(entity: model)
+                await MainActor.run {
+                    ui?.updateUI(viewModel: viewModel)
+                    print("Pokemon Moves \(viewModel)")
+                }
             }
         }
     }

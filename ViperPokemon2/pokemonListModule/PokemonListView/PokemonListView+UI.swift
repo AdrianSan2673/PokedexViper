@@ -38,12 +38,12 @@ extension PokemonListView {
             txtSearch.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
             txtSearch.bottomAnchor.constraint(equalTo: labelRegion.topAnchor),
             
-            labelRegion.topAnchor.constraint(equalTo: txtSearch.bottomAnchor),
+            labelRegion.topAnchor.constraint(equalTo: txtSearch.bottomAnchor, constant: 15),
             labelRegion.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 25),
             labelRegion.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             labelRegion.bottomAnchor.constraint(equalTo: regionTable.topAnchor),
             
-            regionTable.topAnchor.constraint(equalTo: labelRegion.bottomAnchor),
+            regionTable.topAnchor.constraint(equalTo: labelRegion.bottomAnchor,constant: 20),
             regionTable.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 5),
             regionTable.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -5),
             regionTable.bottomAnchor.constraint(equalTo: labelGeneration.topAnchor),
@@ -54,7 +54,7 @@ extension PokemonListView {
             labelGeneration.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             labelGeneration.bottomAnchor.constraint(equalTo: pokemonTable.topAnchor),
            
-            pokemonTable.topAnchor.constraint(equalTo: labelGeneration.bottomAnchor),
+            pokemonTable.topAnchor.constraint(equalTo: labelGeneration.bottomAnchor, constant: 20),
             pokemonTable.leadingAnchor.constraint(equalTo: view.leadingAnchor,constant: 5),
             pokemonTable.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -5),
             pokemonTable.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),

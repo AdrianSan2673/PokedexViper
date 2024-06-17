@@ -36,12 +36,12 @@ extension PokemonListViewCell {
             
             labelPokemonName.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 12),
             labelPokemonName.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -80),
-            labelPokemonName.topAnchor.constraint(equalTo: labelPokemonId.bottomAnchor, constant: 10),
+            labelPokemonName.topAnchor.constraint(equalTo: labelPokemonId.bottomAnchor, constant: 15),
             labelPokemonName.bottomAnchor.constraint(equalTo: labeltype.topAnchor),
             
             labeltype.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 12),
             labeltype.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -60),
-            labeltype.topAnchor.constraint(equalTo: labelPokemonName.bottomAnchor, constant: 18),
+            labeltype.topAnchor.constraint(equalTo: labelPokemonName.bottomAnchor, constant: 20),
             labeltype.bottomAnchor.constraint(equalTo: spaceBlack.topAnchor),
             
             spaceBlack.topAnchor.constraint(equalTo: labeltype.bottomAnchor),
@@ -50,5 +50,4 @@ extension PokemonListViewCell {
             spaceBlack.bottomAnchor.constraint(equalTo: bottomAnchor),
         ])
     }
-    
 }

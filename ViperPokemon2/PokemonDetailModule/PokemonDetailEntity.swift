@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct PokemonDetailEntity: Codable{
+struct PokemonDetailEntity: Codable {
     var abilities : [Abilities]?
     var baseExperience: Int?
     var cries: Cries?
@@ -47,11 +47,19 @@ struct Abilities: Codable {
 struct Ability: Codable {
     var name: String?
     var url: String?
+    
+    enum CodingKeys: String, CodingKey {
+        case name,url
+    }
 }
 
 struct Cries: Codable {
     var latest: String?
     var legacy: String?
+    
+    enum CodingKeys: String, CodingKey {
+        case latest,legacy
+    }
 }
 
 struct GameIndices: Codable {

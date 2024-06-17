@@ -8,14 +8,26 @@
 import Foundation
 
 protocol MovesModuleInteractable: AnyObject {
-    func getMovesDetails(id: String) async -> MovesModuleEntity
+    func getMovesDetails(id: String) async throws -> MovesModuleEntity
 }
 
 class MovesModuleInteractor: MovesModuleInteractable {
-    func getMovesDetails(id: String) async -> MovesModuleEntity {
-        let url = URL(string: id)
-        let (data, _) = try! await URLSession.shared.data(from: url!)
-        let jsonDecoder = JSONDecoder()
-        return try! jsonDecoder.decode(MovesModuleEntity.self, from: data)
+    func getMovesDetails(id: String) async throws -> MovesModuleEntity {
+                
+        guard let url = URL(string:  id) else {
+            throw SessionError.invalidEndPoint
+        }
+        
+        return try await withCheckedThrowingContinuation { continuation in
+            Utils.shared.loadURLAndDecodePokeApi(url: url) { (result: MovesModuleEntity?, error: SessionError?) in
+                if let data = result {
+                    continuation.resume(returning: data)
+                }else if let sessionError = error {
+                    continuation.resume(throwing: sessionError)
+                } else {
+                    continuation.resume(throwing: SessionError.invalidEndPoint)
+                }
+            }
+        }
     }
 }

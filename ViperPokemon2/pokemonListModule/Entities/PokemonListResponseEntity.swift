@@ -7,6 +7,6 @@
 
 import Foundation
 
-struct PokemonListResponseEntity: Decodable {
+struct PokemonListResponseEntity: Codable {
     let result: [PokemonListEntity]
 }
