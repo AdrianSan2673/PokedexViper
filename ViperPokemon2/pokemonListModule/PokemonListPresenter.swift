@@ -14,6 +14,7 @@ protocol PokemonListPresentable: AnyObject {
     func onViewAppear()
     func onTapCell(atIndex: Int)
     func onTapCellRegion(atIndex: Int)
+    func searchPokemon(namePokemon:String)
 }
 
 protocol PokemonListUI: AnyObject {
@@ -61,5 +62,9 @@ class PokemonListPresenter: PokemonListPresentable {
     
     func onTapCellRegion(atIndex: Int) {
         router.showPokemonRegions(regionId: atIndex)
+    }
+    
+    func searchPokemon(namePokemon: String) {
+        router.showPokemonDetail(whitPokemonId: namePokemon.lowercased(), evolutionChain: [EvolutionChain(id: "NA",name: "NA")])
     }
 }

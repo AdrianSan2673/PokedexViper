@@ -24,30 +24,28 @@ extension PokemonListViewCell {
             imageViewPokemon.leadingAnchor.constraint(equalTo: leadingAnchor),
             imageViewPokemon.topAnchor.constraint(equalTo: topAnchor, constant: 10),
             imageViewPokemon.trailingAnchor.constraint(equalTo: trailingAnchor, constant: 30),
-            imageViewPokemon.bottomAnchor.constraint(equalTo: labelPokemonId.topAnchor),
             
             imageViewPokemon.heightAnchor.constraint(equalToConstant: 70),
             imageViewPokemon.widthAnchor.constraint(equalToConstant: 70),
             
             labelPokemonId.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 12),
             labelPokemonId.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -120),
-            labelPokemonId.topAnchor.constraint(equalTo: imageViewPokemon.bottomAnchor, constant: 10),
-            labelPokemonId.bottomAnchor.constraint(equalTo: labelPokemonName.topAnchor),
+            labelPokemonId.bottomAnchor.constraint(equalTo: labelPokemonName.topAnchor,constant: -2),
             
             labelPokemonName.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 12),
             labelPokemonName.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -80),
-            labelPokemonName.topAnchor.constraint(equalTo: labelPokemonId.bottomAnchor, constant: 15),
-            labelPokemonName.bottomAnchor.constraint(equalTo: labeltype.topAnchor),
+            labelPokemonName.topAnchor.constraint(equalTo: labelPokemonId.bottomAnchor),
+            labelPokemonName.bottomAnchor.constraint(equalTo: labeltype.topAnchor, constant: -2),
             
             labeltype.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 12),
             labeltype.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -60),
-            labeltype.topAnchor.constraint(equalTo: labelPokemonName.bottomAnchor, constant: 20),
-            labeltype.bottomAnchor.constraint(equalTo: spaceBlack.topAnchor),
+            labeltype.topAnchor.constraint(equalTo: labelPokemonName.bottomAnchor, constant: 1),
+            labeltype.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -5),
             
-            spaceBlack.topAnchor.constraint(equalTo: labeltype.bottomAnchor),
-            spaceBlack.leadingAnchor.constraint(equalTo: leadingAnchor),
-            spaceBlack.trailingAnchor.constraint(equalTo: trailingAnchor),
-            spaceBlack.bottomAnchor.constraint(equalTo: bottomAnchor),
+            //spaceBlack.topAnchor.constraint(equalTo: labeltype.bottomAnchor),
+            //spaceBlack.leadingAnchor.constraint(equalTo: leadingAnchor),
+            //spaceBlack.trailingAnchor.constraint(equalTo: trailingAnchor),
+            //spaceBlack.bottomAnchor.constraint(equalTo: bottomAnchor),
         ])
     }
 }

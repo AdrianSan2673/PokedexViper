@@ -135,6 +135,7 @@ class PokemonListView: UIViewController {
         regionTable.delegate = self
         pokemonTable.dataSource = self
         pokemonTable.delegate = self
+        txtSearch.delegate = self
     }
 }
 

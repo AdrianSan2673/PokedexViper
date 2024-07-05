@@ -79,3 +79,14 @@ extension PokemonListView: PokemonListUI{
         }
     }
 }
+
+extension PokemonListView: UITextFieldDelegate{
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if textField == txtSearch {
+            textField.becomeFirstResponder()
+            presenter.searchPokemon(namePokemon: txtSearch.text ?? "")
+        }
+        return true
+    }
+}
